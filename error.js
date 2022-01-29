@@ -10,9 +10,15 @@ a().stack
 function fail(){
     try {
         console.log('this works')
+        throw new Error('Oopsie')
     } catch (error) {
-        console.log('we have made an oopsie', error)
+        console.log('we have made an oopsie', error.stack)
+    }finally{
+        console.log('Still good')
+        return 'returning fail'
     }
+
+    console.log('!!!!!!!!!!!!!!!!!!)')  //This part will never get run
 }
 
 fail()
