@@ -20,5 +20,10 @@ function fail(){
 
     console.log('!!!!!!!!!!!!!!!!!!)')  //This part will never get run
 }
-
 fail()
+
+try {
+    something() //this function does not exist
+} catch (error) {
+    throw new Error(error)
+} 
