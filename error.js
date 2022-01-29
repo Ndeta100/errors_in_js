@@ -45,3 +45,34 @@ Promise.resolve('asyncfail').then(response=>{
 }).catch(err=>{
     console.log(err)
 })
+
+// Async await
+async function b(){
+ try {
+     await Promise.reject('opsie')
+ } catch (error) {
+     console.log(error)
+ }
+ console.log('is this still good?')
+}
+b()
+
+// Error extending
+class authenticationError extends Error{
+    constructor(message){
+        super(message)
+        this.name='authenticationError'
+        this.favouriteSnacks='grapes'
+    }
+}
+class databaseError extends Error{
+    constructor(message){
+        super(message)
+        this.name='databaseError'
+        this.favouriteSnacks='grapes'
+    }
+}
+
+const a=new authenticationError
+a.favouriteSnacks
+throw new authenticationError('oopsie')
