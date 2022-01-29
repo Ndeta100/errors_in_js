@@ -27,3 +27,21 @@ try {
 } catch (error) {
     throw new Error(error)
 } 
+
+// Async Error handling
+try {
+    setTimeout(()=>{
+        console.log('ooopsie')
+    },1000)
+} catch (error) {
+    console.log(error)
+}
+
+Promise.resolve('asyncfail').then(response=>{
+    throw new Error('#1 failed') // console.log(response) won't run
+    console.log(response)
+}).then(response=>{
+    console.log(response)
+}).catch(err=>{
+    console.log(err)
+})
